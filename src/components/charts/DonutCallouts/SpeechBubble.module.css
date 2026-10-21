@@ -1,0 +1,232 @@
+.bubble {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: max-content;
+  box-sizing: border-box;
+  padding: 6px 14px 7px 12px;
+  background: linear-gradient(225deg, #ffffff 0%, var(--c-soft, #ecfdf5) 50%, var(--c-bubble-bg-end, #72e3c2) 100%);
+  border: none;
+  border-radius: 9px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12),
+              0 1px 3px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: auto;
+  user-select: none;
+  z-index: 5;
+  overflow: visible;
+  will-change: transform, opacity;
+}
+
+@keyframes bubbleScaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bubbleAnimated {
+  animation: bubbleScaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.bubble:hover,
+.bubbleActive {
+  z-index: 10;
+}
+
+.bubbleDimmed {
+  opacity: 0.35 !important;
+}
+
+/* ========================================================
+   1. Top Vertical Div: Header / Category label
+   ======================================================== */
+.titleRow {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--c-bubble-text, #064e3b);
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+/* ========================================================
+   2. Bottom Horizontal Div: [Left Slot] + [Right Slot]
+   ======================================================== */
+.bottomRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+/* ========================================================
+   2a. Left Slot: Secondary Box
+   ======================================================== */
+.statSlot {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.statTile {
+  background: linear-gradient(180deg, var(--c-tile-start, #2baf87) 0%, var(--c-tile-end, #096148) 100%);
+  color: var(--c-tile-text, #ffffff);
+  border-radius: 0 0 6px 6px;
+  padding: 3px 8px 5px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  margin-bottom: -16px;
+  position: relative;
+  z-index: 3;
+}
+
+.valueDisplay {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  padding: 0 1px;
+}
+
+.deltaDisplay {
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+/* ========================================================
+   2b. Right Slot: Trend Arrow & Percentage Stat
+   ======================================================== */
+.trendSlot {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.trendSvgUp,
+.trendSvgDown {
+  display: block;
+}
+
+.pctText {
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--c-bubble-text, #064e3b);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ========================================================
+   Corner Triangle Hooks
+   Colors dynamically inherit from theme CSS custom properties
+   ======================================================== */
+.hookBeak {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* 1. Left-bottom: Hook on left edge pointing left at bottom corner */
+.hook_left_bottom {
+  border-bottom-left-radius: 0;
+  transform-origin: 0% 100%;
+}
+.hook_left_bottom .hookBeak {
+  bottom: 0;
+  left: -11px;
+  border-top: 12px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-right: 12px solid var(--c-bubble-bg-end, #72e3c2);
+}
+
+/* 2. Left-top: Hook on left edge pointing left at top corner */
+.hook_left_top {
+  border-top-left-radius: 0;
+  transform-origin: 0% 0%;
+}
+.hook_left_top .hookBeak {
+  top: 0;
+  left: -11px;
+  border-top: 0 solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid var(--c-bubble-corner-tl, #a3f1cf);
+}
+
+/* 3. Right-bottom: Hook on right edge pointing right at bottom corner */
+.hook_right_bottom {
+  border-bottom-right-radius: 0;
+  transform-origin: 100% 100%;
+}
+.hook_right_bottom .hookBeak {
+  bottom: 0;
+  right: -11px;
+  border-top: 12px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 12px solid var(--c-bubble-corner-br, #e1fbf1);
+}
+
+/* 4. Right-top: Hook on right edge pointing right at top corner */
+.hook_right_top {
+  border-top-right-radius: 0;
+  transform-origin: 100% 0%;
+}
+.hook_right_top .hookBeak {
+  top: 0;
+  right: -11px;
+  border-top: 0 solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid #ffffff;
+}
+
+/* 5. Top-left: Hook on top edge pointing up at left corner */
+.hook_top_left {
+  border-top-left-radius: 0;
+  transform-origin: 0% 0%;
+}
+.hook_top_left .hookBeak {
+  top: -11px;
+  left: 0;
+  border-left: 0 solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid var(--c-bubble-corner-tl, #a3f1cf);
+}
+
+/* 6. Top-right: Hook on top edge pointing up at right corner */
+.hook_top_right {
+  border-top-right-radius: 0;
+  transform-origin: 100% 0%;
+}
+.hook_top_right .hookBeak {
+  top: -11px;
+  right: 0;
+  border-right: 0 solid transparent;
+  border-left: 12px solid transparent;
+  border-bottom: 12px solid #ffffff;
+}
+
+@media (max-width: 768px) {
+  .bubble {
+    width: 100%;
+  }
+}

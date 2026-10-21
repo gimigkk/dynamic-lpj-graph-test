@@ -1,0 +1,54 @@
+.odometerRoot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.odometerCol {
+  position: relative;
+  display: inline-block;
+  height: 1.1em;
+  overflow: hidden;
+  line-height: 1.1;
+  vertical-align: middle;
+}
+
+.odometerReel {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  transition: transform var(--odometer-duration, 2s) cubic-bezier(0.1, 0.95, 0.2, 1);
+}
+
+.odometerDigit {
+  height: 1.1em;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+.odometerStatic {
+  height: 1.1em;
+  line-height: 1.1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0 0.05em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .odometerReel {
+    transition: none !important;
+  }
+}
