@@ -1,0 +1,167 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  position: relative;
+}
+
+.chartWrapper {
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.gridRing {
+  fill: none;
+  stroke: #cbd5e1;
+  stroke-width: 0.85;
+  stroke-dasharray: 4 4;
+}
+
+.spoke {
+  stroke: #cbd5e1;
+  stroke-width: 0.85;
+}
+
+.axisNumber {
+  font-size: 9.5px;
+  font-weight: 500;
+  fill: var(--c-text);
+  opacity: 0.65;
+  font-family: var(--font-sans);
+  user-select: none;
+}
+
+.axisNumberInside {
+  font-size: 9.5px;
+  font-weight: 500;
+  fill: #ffffff;
+  opacity: 0.9;
+  font-family: var(--font-sans);
+  user-select: none;
+}
+
+.axisLabel {
+  font-size: 13.5px;
+  font-weight: 500;
+  fill: var(--c-text);
+  font-family: var(--font-sans);
+  user-select: none;
+  line-height: 1.25;
+}
+
+.dataPolygon {
+  stroke: var(--c-primary);
+  stroke-width: 1.75;
+  stroke-linejoin: round;
+}
+
+.averagePolygon,
+.averageSegment {
+  fill: none;
+  stroke: var(--c-benchmark, var(--c-accent));
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+  stroke-linejoin: round;
+  stroke-linecap: butt;
+}
+
+.dataDot {
+  fill: var(--c-primary);
+  cursor: pointer;
+  transition: transform 0.15s ease, r 0.15s ease;
+}
+
+.dataDot:hover {
+  r: 7;
+}
+
+.tooltip {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--c-card-bg, #ffffff);
+  border: 1px solid var(--c-border);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+  font-size: 0.8125rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tooltipTitle {
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.tooltipScore {
+  font-weight: 800;
+  color: var(--c-primary);
+}
+
+.legend {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: var(--space-2) auto 0;
+  font-size: 0.9375rem;
+}
+
+.legendRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  color: var(--c-text);
+}
+
+.legendPrimaryVisual {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 44px;
+  height: 16px;
+  background: var(--c-soft);
+  border-radius: 1px;
+}
+
+.legendPrimaryLine {
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  background: var(--c-primary);
+}
+
+.legendPrimaryDot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-primary);
+}
+
+.legendDashedLine {
+  width: 44px;
+  height: 0;
+  border-top: 2px dashed var(--c-benchmark, var(--c-accent));
+}
+
+@media (max-width: 480px) {
+  .axisLabel {
+    font-size: 11px;
+  }
+}
