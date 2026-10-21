@@ -1,0 +1,65 @@
+{
+  "nav_home": "Playground Komponen Statistik",
+  "nav_back": "← Kembali ke Menu",
+  "theme_label": "Tema:",
+  "theme_bab1": "Bab 1 (Biru)",
+  "theme_bab2": "Bab 2 (Hijau)",
+  "theme_bab3": "Bab 3 (Ungu)",
+  "lang_label": "Bahasa:",
+  "props_title": "Catatan Props & Konfigurasi",
+
+  "pg_bignumber_title": "Komponen BigNumber",
+  "pg_bignumber_desc": "Menampilkan angka statistik besar dengan animasi hitung naik saat terlihat.",
+  "pg_bignumber_props": "Props: value (number), label (string), prefix (opsional), suffix (opsional), decimals (opsional). Menggunakan Intl.NumberFormat via fmt().",
+
+  "pg_areatrend_title": "Komponen AreaTrend",
+  "pg_areatrend_desc": "Grafik tren area Recharts dengan gradien dinamis dan penanda cincin pada titik terakhir.",
+  "pg_areatrend_props": "Props: data ({ year: number, value: number }[]), xKey, yKey, unit. Mengambil warna dari CSS custom properties.",
+
+  "pg_horizontalbar_title": "Komponen HorizontalBar",
+  "pg_horizontalbar_desc": "Grafik batang horizontal dengan gradien peringkat, label nilai + persen di ujung, dan hover redup.",
+  "pg_horizontalbar_props": "Props: data ({ label: { id, en }, value: number }[]), showPercent, valueUnit. Merespons ukuran layar sempit.",
+
+  "pg_donut_title": "Komponen DonutCallouts",
+  "pg_donut_desc": "Donat SVG murni dengan kartu callout HTML terhubung sudut irisan, teks tengah, dan interaksi sorot.",
+  "pg_donut_props": "Props: data ({ id: string, label: { id, en }, value: number, dx?: number, dy?: number }[]), centerCaption (string).",
+
+  "pg_sankey_title": "Komponen SankeyAllocation",
+  "pg_sankey_desc": "Diagram alir alokasi anggaran proporsional dengan pita SVG murni, jarum pin, dan tumpukan sumber/tujuan.",
+
+  "pg_gauge_title": "Komponen Gauge",
+  "pg_gauge_desc": "Gauge setengah lingkaran SVG murni dengan sapuan animasi, persentase besar, dan tanda 0-80.",
+  "pg_gauge_props": "Props: value (number 0-100), label (string), min (opsional), max (opsional). Menghormati prefers-reduced-motion.",
+
+  "pg_radar_title": "Komponen RadarImpact",
+  "pg_radar_desc": "Grafik radar 6 sumbu Recharts dengan area capaian dan garis referensi rata-rata putus-putus.",
+  "pg_radar_props": "Props: data ({ subject: { id, en }, score: number, fullMark: number }[]), avgScore (number).",
+
+  "pg_sdgbars_title": "Komponen SdgBars",
+  "pg_sdgbars_desc": "17 kolom SDG dalam 2 baris (9 + 8), perbandingan tahun 2024 vs 2025 dengan badge perubahan persen.",
+  "pg_sdgbars_props": "Props: data ({ goal: number, y2024: number, y2025: number }[]), filter opsi (all, 2024, 2025).",
+
+  "label_total_participants": "Total Partisipan",
+  "label_org_growth": "Pertumbuhan Organisasi",
+  "label_org_typology": "Tipologi Organisasi 2025",
+  "label_total_orgs": "Total Organisasi",
+  "label_participation_type": "Partisipasi Menurut Jenis Organisasi",
+  "label_participation_faculty": "Partisipasi Menurut Fakultas",
+  "label_accountability_score": "Capaian Indeks Akuntabilitas",
+  "label_activity_scale": "Distribusi Skala Aktivitas",
+  "label_activity_categories": "Kategori Aktivitas Mahasiswa",
+  "label_total_activities": "Total Aktivitas",
+  "label_vs_year": "{diff} thd {year}",
+  "label_radar_impact": "Evaluasi Dampak Organisasi",
+  "label_radar_avg": "Rata-rata Acuan",
+  "label_radar_score": "Skor Capaian",
+  "label_sdg_title": "Capaian SDG 2024 vs 2025",
+  "label_sdg_filter_all": "Semua Tahun",
+  "label_sdg_filter_2024": "Hanya 2024",
+  "label_sdg_filter_2025": "Hanya 2025",
+  "label_sdg_goal": "SDG",
+  "label_year": "Tahun",
+  "label_count": "Jumlah",
+  "label_score": "Skor",
+  "label_percent": "Persentase"
+}

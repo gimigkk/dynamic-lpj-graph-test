@@ -1,0 +1,65 @@
+{
+  "nav_home": "Statistics Component Playground",
+  "nav_back": "← Back to Menu",
+  "theme_label": "Theme:",
+  "theme_bab1": "Chapter 1 (Blue)",
+  "theme_bab2": "Chapter 2 (Green)",
+  "theme_bab3": "Chapter 3 (Purple)",
+  "lang_label": "Language:",
+  "props_title": "Props & Configuration Notes",
+
+  "pg_bignumber_title": "BigNumber Component",
+  "pg_bignumber_desc": "Displays a prominent key statistic with an animated count-up on entry.",
+  "pg_bignumber_props": "Props: value (number), label (string), prefix (optional), suffix (optional), decimals (optional). Uses Intl.NumberFormat via fmt().",
+
+  "pg_areatrend_title": "AreaTrend Component",
+  "pg_areatrend_desc": "Recharts area trend chart with dynamic gradient and highlighted ring marker on the latest point.",
+  "pg_areatrend_props": "Props: data ({ year: number, value: number }[]), xKey, yKey, unit. Colors inherited from CSS custom properties.",
+
+  "pg_horizontalbar_title": "HorizontalBar Component",
+  "pg_horizontalbar_desc": "Horizontal bar chart with rank-based gradient, value + percent label at bar end, and hover dimming.",
+  "pg_horizontalbar_props": "Props: data ({ label: { id, en }, value: number }[]), showPercent, valueUnit. Responsive on small screens.",
+
+  "pg_donut_title": "DonutCallouts Component",
+  "pg_donut_desc": "Hand-built SVG donut with HTML callout cards connected to slice angles, center caption, and hover highlights.",
+  "pg_donut_props": "Props: data ({ id: string, label: { id, en }, value: number, dx?: number, dy?: number }[]), centerCaption (string).",
+
+  "pg_sankey_title": "SankeyAllocation Component",
+  "pg_sankey_desc": "Proportional budget allocation Sankey flow diagram with pure SVG ribbons, pin needles, and source/destination stacks.",
+
+  "pg_gauge_title": "Gauge Component",
+  "pg_gauge_desc": "Hand-built SVG semicircle gauge with animated sweep, large center percentage, and tick marks 0-80.",
+  "pg_gauge_props": "Props: value (number 0-100), label (string), min (optional), max (optional). Respects prefers-reduced-motion.",
+
+  "pg_radar_title": "RadarImpact Component",
+  "pg_radar_desc": "6-axis Recharts radar chart with filled achieved area and dashed benchmark reference line.",
+  "pg_radar_props": "Props: data ({ subject: { id, en }, score: number, fullMark: number }[]), avgScore (number).",
+
+  "pg_sdgbars_title": "SdgBars Component",
+  "pg_sdgbars_desc": "17 SDG columns in two rows (9 + 8), comparing 2024 vs 2025 with percent change badges.",
+  "pg_sdgbars_props": "Props: data ({ goal: number, y2024: number, y2025: number }[]), filter options (all, 2024, 2025).",
+
+  "label_total_participants": "Total Participants",
+  "label_org_growth": "Organization Growth",
+  "label_org_typology": "Organization Typology 2025",
+  "label_total_orgs": "Total Organizations",
+  "label_participation_type": "Participation by Organization Type",
+  "label_participation_faculty": "Participation by Faculty",
+  "label_accountability_score": "Accountability Index Achievement",
+  "label_activity_scale": "Activity Scale Distribution",
+  "label_activity_categories": "Student Activity Categories",
+  "label_total_activities": "Total Activities",
+  "label_vs_year": "{diff} vs {year}",
+  "label_radar_impact": "Organizational Impact Evaluation",
+  "label_radar_avg": "Benchmark Average",
+  "label_radar_score": "Achieved Score",
+  "label_sdg_title": "SDG Achievement 2024 vs 2025",
+  "label_sdg_filter_all": "All Years",
+  "label_sdg_filter_2024": "2024 Only",
+  "label_sdg_filter_2025": "2025 Only",
+  "label_sdg_goal": "SDG",
+  "label_year": "Year",
+  "label_count": "Count",
+  "label_score": "Score",
+  "label_percent": "Percentage"
+}
