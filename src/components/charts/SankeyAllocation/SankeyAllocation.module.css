@@ -1,0 +1,342 @@
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.stageSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ========================================================
+   SOURCE BUDGET BLOCKS (Phase 1)
+   ======================================================== */
+
+.sourceRectBpptn {
+  fill: var(--c-tile-start, #0d9488);
+  transform-box: fill-box;
+  transform-origin: top;
+  animation: growDown 0.50s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.sourceRectNonBpptn {
+  fill: var(--c-donut-start, #064e3b);
+  transform-box: fill-box;
+  transform-origin: top;
+  animation: growDown 1.40s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
+}
+
+@keyframes growDown {
+  from {
+    transform: scaleY(0);
+    opacity: 0.2;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.staggerItem {
+  transform-box: fill-box;
+  animation: slideUpMask 0.60s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideUpMask {
+  from {
+    transform: translateY(28px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.sourceBlock {
+  transition: opacity 0.25s ease;
+}
+
+.sourceBlockDimmed {
+  opacity: 0.25;
+}
+
+.sourceCategory {
+  fill: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.sourceTitle {
+  fill: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sourceAmountSmall {
+  fill: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.sourcePctSmall {
+  fill: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.sourceCategoryLarge {
+  fill: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.sourceTitleLarge {
+  fill: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 17.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.badgeHighlight {
+  fill: var(--c-tile-start, #0f766e);
+}
+
+.sourceAmountHighlight {
+  fill: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.sourcePctBig {
+  fill: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================================
+   DESTINATION-STAGGERED RIBBONS (Phase 2)
+   ======================================================== */
+
+.ribbonWipeRect {
+  animation: wipeRibbon 0.90s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+@keyframes wipeRibbon {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 570px;
+  }
+}
+
+.ribbon {
+  opacity: 1;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+  cursor: pointer;
+}
+
+.ribbonDimmed {
+  opacity: 0.12 !important;
+}
+
+.ribbonHighlighted {
+  opacity: 1 !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+.ribbonPctLarge {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  font-family: var(--font-heading, "Fraunces", serif) !important;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+}
+
+.ribbonPctMedium {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  font-family: var(--font-heading, "Fraunces", serif) !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em;
+  pointer-events: none;
+}
+
+.ribbonPctSmall {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  font-family: var(--font-heading, "Fraunces", serif) !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em;
+  pointer-events: none;
+}
+
+/* ========================================================
+   RIGHT DESTINATIONS (Phase 3)
+   ======================================================== */
+
+.destRow {
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+.destRowDimmed {
+  opacity: 0.25;
+}
+
+.destRowHighlighted {
+  opacity: 1;
+}
+
+.targetBar {
+  fill: var(--c-donut-end, #14b8a6);
+  transform-box: fill-box;
+  transform-origin: top;
+  animation: targetBarGrow 0.60s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes targetBarGrow {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.destTextGroup {
+  animation: destTextFadeIn 0.60s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes destTextFadeIn {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.targetTitle {
+  fill: var(--c-text, #064e3b);
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.targetLine {
+  fill: var(--c-text, #4b5563);
+  opacity: 0.7;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 500;
+}
+
+/* ========================================================
+   PIN POINTERS (Phase 3)
+   ======================================================== */
+
+.pinItem {
+  animation: pinDrop 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: opacity 0.25s ease;
+  cursor: pointer;
+}
+
+.pinItemDimmed {
+  opacity: 0.15 !important;
+}
+
+.pinItemHighlighted {
+  opacity: 1 !important;
+}
+
+@keyframes pinDrop {
+  from {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.pinLine {
+  stroke: var(--c-donut-end, #10b981);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.pinDot {
+  fill: var(--c-bubble-bg-end, #34d399);
+}
+
+.pinPct {
+  fill: var(--c-text, #064e3b);
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.pinLabel {
+  fill: var(--c-text, #064e3b);
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ========================================================
+   REDUCED MOTION
+   ======================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .sourceRectBpptn,
+  .sourceRectNonBpptn,
+  .staggerItem,
+  .ribbonWipeRect,
+  .targetBar,
+  .destTextGroup,
+  .pinItem {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 570px !important;
+  }
+}
