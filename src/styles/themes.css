@@ -1,0 +1,111 @@
+:root,
+[data-theme="bab1"] {
+  --c-primary: #385DDC;
+  --c-accent: #f97316;
+  --c-benchmark: #ea580c;
+  --c-soft: #eff6ff;
+  --c-text: #00204F;
+  --c-on-primary: #ffffff;
+  --c-border: #7DBCEB;
+  --c-card-bg: #ffffff;
+  --c-track: #e2e8f0;
+
+  /* Donut stepped palette (#00204F deep navy to #7DBCEB soft sky blue) */
+  --c-donut-start: #00204F;
+  --c-donut-end: #7DBCEB;
+  --c-donut-1: #00204F;
+  --c-donut-2: #0C2E74;
+  --c-donut-3: #0F3C9D;
+  --c-donut-4: #1E54C6;
+  --c-donut-5: #4479E3;
+  --c-donut-6: #7DBCEB;
+
+  /* Speech bubble background & hooks */
+  --c-bubble-bg-end: #7DBCEB;
+  --c-bubble-corner-tl: #bfdbfe;
+  --c-bubble-corner-br: #e0f2fe;
+  --c-bubble-text: #00204F;
+
+  /* Secondary box (stat tile) */
+  --c-tile-start: #385DDC;
+  --c-tile-end: #11225B;
+  --c-tile-text: #ffffff;
+
+  /* Center hub badge */
+  --c-hub-badge-bg: rgba(125, 188, 235, 0.25);
+  --c-hub-badge-text: #11225B;
+}
+
+[data-theme="bab2"] {
+  --c-primary: #047857;
+  --c-accent: #f59e0b;
+  --c-benchmark: #ea580c;
+  --c-soft: #ecfdf5;
+  --c-text: #064e3b;
+  --c-on-primary: #ffffff;
+  --c-border: #a7f3d0;
+  --c-card-bg: #ffffff;
+  --c-track: #e2e8f0;
+
+  /* Donut stepped palette (deep forest green to emerald) */
+  --c-donut-start: #073e2e;
+  --c-donut-end: #26b88c;
+  --c-donut-1: #073e2e;
+  --c-donut-2: #09513d;
+  --c-donut-3: #0e674e;
+  --c-donut-4: #148062;
+  --c-donut-5: #1c9b77;
+  --c-donut-6: #26b88c;
+
+  /* Speech bubble background & hooks */
+  --c-bubble-bg-end: #72e3c2;
+  --c-bubble-corner-tl: #a3f1cf;
+  --c-bubble-corner-br: #e1fbf1;
+  --c-bubble-text: #064e3b;
+
+  /* Secondary box (stat tile) */
+  --c-tile-start: #2baf87;
+  --c-tile-end: #096148;
+  --c-tile-text: #ffffff;
+
+  /* Center hub badge */
+  --c-hub-badge-bg: rgba(209, 250, 229, 0.9);
+  --c-hub-badge-text: #047857;
+}
+
+[data-theme="bab3"] {
+  --c-primary: #36007D;
+  --c-accent: #ea580c;
+  --c-benchmark: #ea580c;
+  --c-soft: #f5f3ff;
+  --c-text: #36007D;
+  --c-on-primary: #ffffff;
+  --c-border: #ddd6fe;
+  --c-card-bg: #ffffff;
+  --c-track: #e2e8f0;
+
+  /* Donut stepped palette (deep royal purple to radiant lilac) */
+  --c-donut-start: #240054;
+  --c-donut-end: #a855f7;
+  --c-donut-1: #240054;
+  --c-donut-2: #3a0086;
+  --c-donut-3: #520ea8;
+  --c-donut-4: #6d24ca;
+  --c-donut-5: #8a3dec;
+  --c-donut-6: #a855f7;
+
+  /* Speech bubble background & hooks */
+  --c-bubble-bg-end: #c084fc;
+  --c-bubble-corner-tl: #d8b4fe;
+  --c-bubble-corner-br: #f3e8ff;
+  --c-bubble-text: #240054;
+
+  /* Secondary box (stat tile) */
+  --c-tile-start: #7c3aed;
+  --c-tile-end: #36007D;
+  --c-tile-text: #ffffff;
+
+  /* Center hub badge */
+  --c-hub-badge-bg: rgba(237, 233, 254, 0.9);
+  --c-hub-badge-text: #36007D;
+}
