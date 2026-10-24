@@ -1,0 +1,140 @@
+.page {
+  min-height: 100vh;
+  padding: 0 1rem 1.25rem;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #0f172a;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 0 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 0.8125rem;
+  color: #64748b;
+  margin-top: 0.125rem;
+}
+
+.controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.replayGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.replayLabel {
+  font-weight: 500;
+  color: #64748b;
+}
+
+.replayBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 31px;
+  width: 31px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  color: #475569;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.replayBtn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.replayBtn:active {
+  background: #e2e8f0;
+  transform: scale(0.96);
+}
+
+.replayIcon {
+  display: block;
+}
+
+/* ========================================================
+   BENTO GRID LAYOUT - COMPACT, MINIMAL GAP, CLEAN
+   ======================================================== */
+
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.bentoCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 0.875rem 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.cardTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+/* Side-by-side tiles (Donut & Radar: 6 columns each on desktop) */
+.colHalf {
+  grid-column: span 6;
+}
+
+/* Full-width tile (Sankey: 12 columns) */
+.colFull {
+  grid-column: span 12;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .colHalf {
+    grid-column: span 12;
+  }
+}
