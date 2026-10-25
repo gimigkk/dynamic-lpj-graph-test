@@ -224,9 +224,3 @@
   border-left: 12px solid transparent;
   border-bottom: 12px solid #ffffff;
 }
-
-@media (max-width: 768px) {
-  .bubble {
-    width: 100%;
-  }
-}

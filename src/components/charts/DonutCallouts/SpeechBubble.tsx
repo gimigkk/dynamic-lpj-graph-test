@@ -20,6 +20,7 @@ export interface SpeechBubbleProps {
   isDimmed?: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  onClick?: () => void;
   style?: React.CSSProperties;
   animationDelay?: string;
 }
@@ -35,6 +36,7 @@ export function SpeechBubble({
   isDimmed = false,
   onMouseEnter,
   onMouseLeave,
+  onClick,
   style,
   animationDelay,
 }: SpeechBubbleProps) {
@@ -53,6 +55,7 @@ export function SpeechBubble({
       style={bubbleStyle}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onClick={onClick}
     >
       {/* Corner Triangle Hook */}
       <span className={styles.hookBeak} aria-hidden="true" />

@@ -1,5 +1,4 @@
 import React from "react";
-import { Odometer } from "@/components/ui/Odometer";
 import { RIBBON_START_X, RIBBON_END_X } from "../SankeyAllocation.constants";
 import { RibbonFlow } from "../SankeyAllocation.types";
 import { createRibbonPath, getBézierCenterY } from "../sankeyMath";
@@ -44,6 +43,7 @@ export function SankeyRibbons({ flows, activeDestId, onHoverDest }: SankeyRibbon
             }`}
             onMouseEnter={() => onHoverDest(flow.destId)}
             onMouseLeave={() => onHoverDest(null)}
+            onClick={() => onHoverDest(activeDestId === flow.destId ? null : flow.destId)}
           />
         );
       })}
@@ -59,48 +59,30 @@ export function SankeyRibbons({ flows, activeDestId, onHoverDest }: SankeyRibbon
 
           const isLarge = flow.pct > 50;
           const isMedium = flow.pct > 10;
-          const foH = isLarge ? 44 : isMedium ? 28 : 22;
-          const foW = isLarge ? 140 : isMedium ? 90 : 70;
-          const foY = Math.round(centerY - foH / 2);
           const isDimmed = activeDestId !== null && flow.destId !== activeDestId;
 
           return (
-            <foreignObject
+            <text
               key={`lbl-${flow.id}`}
               x={labelX}
-              y={foY}
-              width={foW}
-              height={foH}
+              y={Math.round(centerY)}
+              dominantBaseline="central"
               clipPath={`url(#clip-wipe-${flow.destId})`}
+              className={
+                isLarge
+                  ? styles.ribbonPctLarge
+                  : isMedium
+                  ? styles.ribbonPctMedium
+                  : styles.ribbonPctSmall
+              }
               style={{
-                overflow: "hidden",
                 pointerEvents: "none",
                 opacity: isDimmed ? 0.35 : 1,
                 transition: "opacity 0.25s ease",
               }}
             >
-              <div
-                style={{
-                  height: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  fontFamily: "var(--font-heading)",
-                }}
-              >
-                <Odometer
-                  value={flow.pctFormatted}
-                  delay={0}
-                  duration="2.4s"
-                  className={
-                    isLarge
-                      ? styles.ribbonPctLarge
-                      : isMedium
-                      ? styles.ribbonPctMedium
-                      : styles.ribbonPctSmall
-                  }
-                />
-              </div>
-            </foreignObject>
+              {flow.pctFormatted}
+            </text>
           );
         })}
     </g>

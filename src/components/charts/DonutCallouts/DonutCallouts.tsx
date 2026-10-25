@@ -153,6 +153,14 @@ export function DonutCallouts({
     }, 120);
   }, []);
 
+  const handleToggle = useCallback((id: string) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setHoveredId((prev) => (prev === id ? null : id));
+  }, []);
+
   useEffect(() => {
     return () => {
       if (hoverTimeoutRef.current) {
@@ -436,8 +444,10 @@ export function DonutCallouts({
                     strokeLinejoin="round"
                     opacity={sliceOpacity}
                     className={styles.slicePath}
+                    style={{ cursor: "pointer" }}
                     onMouseEnter={() => handleMouseEnter(slice.id)}
                     onMouseLeave={handleMouseLeave}
+                    onClick={() => handleToggle(slice.id)}
                   />
                 );
               })}
@@ -479,53 +489,11 @@ export function DonutCallouts({
                 animationDelay={shouldReduceMotion ? undefined : `${radialDelayMs}ms`}
                 onMouseEnter={() => handleMouseEnter(slice.id)}
                 onMouseLeave={handleMouseLeave}
+                onClick={() => handleToggle(slice.id)}
               />
             </div>
           );
         })}
-        </div>
-      </div>
-
-      {/* Mobile Responsive Layout (<768px) */}
-      <div className={styles.mobileLayout}>
-        <div className={styles.mobileDonutContainer}>
-          <div className={styles.mobileCenterHub}>
-            {renderCenterContent()}
-          </div>
-
-          <svg viewBox="0 0 860 540" className={styles.donutSvgMobile}>
-            <g className={styles.pieGroup}>
-              {slices.map((slice) => (
-                <path
-                  key={slice.id}
-                  d={slice.pathData}
-                  fill={slice.color}
-                  stroke={slice.color}
-                  strokeWidth="0.75"
-                  strokeLinejoin="round"
-                />
-              ))}
-            </g>
-          </svg>
-        </div>
-
-        <div className={styles.mobileCardsGrid}>
-          {slices.map((slice) => (
-            <SpeechBubble
-              key={`mobile-${slice.id}`}
-              label={slice.label[lang]}
-              value={fmt(slice.value, {
-                maximumFractionDigits: isPercentData ? 1 : 0,
-              })}
-              delta={slice.delta}
-              pct={slice.pctDisplay || `${fmt(slice.fraction * 100, { maximumFractionDigits: 1 })}%`}
-              trend={slice.cfg.trend}
-              hook={slice.cfg.hook}
-              isActive={hoveredId === slice.id}
-              onMouseEnter={() => handleMouseEnter(slice.id)}
-              onMouseLeave={handleMouseLeave}
-            />
-          ))}
         </div>
       </div>
     </div>

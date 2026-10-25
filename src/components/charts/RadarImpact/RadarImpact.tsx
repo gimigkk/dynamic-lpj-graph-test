@@ -54,6 +54,10 @@ export function RadarImpact({ data, avgScore = 3.29 }: RadarImpactProps) {
   const [avgDashOffset, setAvgDashOffset] = useState<number>(0);
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
+  const handleToggle = (idx: number) => {
+    setHoveredIdx((prev) => (prev === idx ? null : idx));
+  };
+
   useEffect(() => {
     if (shouldReduceMotion) {
       setProgressValues([1, 1, 1, 1, 1, 1]);
@@ -66,6 +70,26 @@ export function RadarImpact({ data, avgScore = 3.29 }: RadarImpactProps) {
     if (isInView) {
       const controls: { stop: () => void }[] = [];
 
+      let curProg = [0, 0, 0, 0, 0, 0];
+      let curOpac = [0, 0, 0, 0, 0, 0];
+      let curFill = 0;
+      let curAvgOpac = 0;
+      let curAvgDash = 0;
+
+      let rafId: number | null = null;
+      const scheduleFlush = () => {
+        if (rafId === null) {
+          rafId = requestAnimationFrame(() => {
+            rafId = null;
+            setProgressValues([...curProg]);
+            setDotOpacities([...curOpac]);
+            setFillOpacity(curFill);
+            setAvgOpacity(curAvgOpac);
+            setAvgDashOffset(curAvgDash);
+          });
+        }
+      };
+
       // Average polygon glitch-flicker: triggers after main polygon completes its outward expansion
       // Rapid staccato opacity sequence simulating power surging into the neon line
       const flickerSteps = [0, 0.85, 0.15, 1, 0.3, 0.95, 0.6, 1];
@@ -76,7 +100,8 @@ export function RadarImpact({ data, avgScore = 3.29 }: RadarImpactProps) {
           ease: "linear",
           onUpdate: (latest) => {
             const idx = Math.min(Math.floor(latest * (flickerSteps.length - 1)), flickerSteps.length - 1);
-            setAvgOpacity(flickerSteps[idx]);
+            curAvgOpac = flickerSteps[idx];
+            scheduleFlush();
           },
         })
       );
@@ -87,7 +112,10 @@ export function RadarImpact({ data, avgScore = 3.29 }: RadarImpactProps) {
           duration: 0.55,
           delay: 0.85,
           ease: [0.16, 1, 0.3, 1],
-          onUpdate: (val) => setAvgDashOffset(val),
+          onUpdate: (val) => {
+            curAvgDash = val;
+            scheduleFlush();
+          },
         })
       );
 
@@ -96,15 +124,15 @@ export function RadarImpact({ data, avgScore = 3.29 }: RadarImpactProps) {
         animate(0, 1, {
           duration: 0.7,
           ease: "easeOut",
-          onUpdate: (latest) => setFillOpacity(latest),
+          onUpdate: (latest) => {
+            curFill = latest;
+            scheduleFlush();
+          },
         })
       );
 
       // Symmetrical propagation starting at maxScoreIdx:
       // Distance: dist 0 = peak, dist 1 = neighbors left & right, dist 2, dist 3 = opposite
-      const curProg = [0, 0, 0, 0, 0, 0];
-      const curOpac = [0, 0, 0, 0, 0, 0];
-
       for (let i = 0; i < 6; i++) {
         const rawDiff = Math.abs(i - maxScoreIdx);
         const dist = Math.min(rawDiff, 6 - rawDiff); // 0, 1, 2, or 3
@@ -118,7 +146,7 @@ export function RadarImpact({ data, avgScore = 3.29 }: RadarImpactProps) {
             ease: [0.34, 1.56, 0.64, 1], // organic overshoot
             onUpdate: (val) => {
               curProg[i] = val;
-              setProgressValues([...curProg]);
+              scheduleFlush();
             },
           })
         );
@@ -131,13 +159,16 @@ export function RadarImpact({ data, avgScore = 3.29 }: RadarImpactProps) {
             ease: "easeOut",
             onUpdate: (val) => {
               curOpac[i] = val;
-              setDotOpacities([...curOpac]);
+              scheduleFlush();
             },
           })
         );
       }
 
-      return () => controls.forEach((c) => c.stop());
+      return () => {
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        controls.forEach((c) => c.stop());
+      };
     }
   }, [isInView, shouldReduceMotion, maxScoreIdx]);
 
@@ -315,18 +346,29 @@ export function RadarImpact({ data, avgScore = 3.29 }: RadarImpactProps) {
 
           {/* 7. Vertex data dots (individually faded in) */}
           {dataPointsCoords.map(({ x, y, item, index }) => (
-            <circle
-              key={`dot-${index}`}
-              cx={x}
-              cy={y}
-              r={5.5}
-              opacity={dotOpacities[index] ?? 0}
-              className={styles.dataDot}
-              onMouseEnter={() => setHoveredIdx(index)}
-              onMouseLeave={() => setHoveredIdx(null)}
-            >
-              <title>{`${item.subject[lang]}: ${fmt(item.score, { minimumFractionDigits: 2 })}`}</title>
-            </circle>
+            <g key={`dot-g-${index}`}>
+              <circle
+                cx={x}
+                cy={y}
+                r={20}
+                fill="transparent"
+                style={{ cursor: "pointer" }}
+                onClick={() => handleToggle(index)}
+              />
+              <circle
+                cx={x}
+                cy={y}
+                r={5.5}
+                opacity={dotOpacities[index] ?? 0}
+                className={styles.dataDot}
+                style={{ cursor: "pointer" }}
+                onMouseEnter={() => setHoveredIdx(index)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                onClick={() => handleToggle(index)}
+              >
+                <title>{`${item.subject[lang]}: ${fmt(item.score, { minimumFractionDigits: 2 })}`}</title>
+              </circle>
+            </g>
           ))}
 
           {/* 8. Axis labels */}
@@ -339,8 +381,10 @@ export function RadarImpact({ data, avgScore = 3.29 }: RadarImpactProps) {
                 y={y}
                 textAnchor={anchor}
                 className={styles.axisLabel}
+                style={{ cursor: "pointer" }}
                 onMouseEnter={() => setHoveredIdx(i)}
                 onMouseLeave={() => setHoveredIdx(null)}
+                onClick={() => handleToggle(i)}
               >
                 {lines.map((line, lineIdx) => (
                   <tspan key={`line-${lineIdx}`} x={x} dy={lineIdx === 0 ? 0 : "1.25em"}>

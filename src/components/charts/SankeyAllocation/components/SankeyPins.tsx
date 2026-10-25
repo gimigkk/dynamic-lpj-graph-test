@@ -45,7 +45,16 @@ export function SankeyPins({ flows, activeDestId, onHoverDest }: SankeyPinsProps
             }}
             onMouseEnter={() => onHoverDest(pin.destId)}
             onMouseLeave={() => onHoverDest(null)}
+            onClick={() => onHoverDest(activeDestId === pin.destId ? null : pin.destId)}
           >
+            {/* Expanded Touch Target */}
+            <circle
+              cx={pin.x}
+              cy={dotY}
+              r="22"
+              fill="transparent"
+              style={{ cursor: "pointer" }}
+            />
             {/* Guide Line */}
             <line
               x1={pin.x}

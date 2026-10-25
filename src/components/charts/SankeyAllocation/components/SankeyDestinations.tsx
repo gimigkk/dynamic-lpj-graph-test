@@ -35,6 +35,7 @@ export function SankeyDestinations({
             }`}
             onMouseEnter={() => onHoverDest(dest.id)}
             onMouseLeave={() => onHoverDest(null)}
+            onClick={() => onHoverDest(activeDestId === dest.id ? null : dest.id)}
           >
             {/* Flat seam on left facing ribbons, rounded on outer right */}
             <path
